@@ -7,12 +7,14 @@ import gzip
 import pandas as pd
 import sqlalchemy
 
-def download_pageviews(ds, **kwargs):
+""" This function downloads the compressed pageviews data from a specific URL """
+def download_zipped_pageviews(ds, **kwargs):
     url = "https://dumps.wikimedia.org/other/pageviews/2024/10/pageviews-20241001-230000.gz"
     response = requests.get(url)
     with open('/tmp/pageviews.gz', 'wb') as f:
         f.write(response.content)
 
+""" This function extracts data from the .gz file, filters it, and saves it to a database """
 def extract_and_filter():
     with gzip.open('/tmp/pageviews.gz', 'rt') as f:
         lines = f.readlines()
@@ -20,13 +22,14 @@ def extract_and_filter():
     df = pd.DataFrame(data, columns=["project", "page_name", "views", "bytes"])
 
     # Filter for specific companies
-    companies = ["Amazon", "Apple_Inc.", "Meta_Platforms", "Google", "Microsoft"]
+    companies = ["Amazon", "Apple", "Facebook", "Google", "Microsoft"]
     filtered_df = df[df['page_name'].isin(companies)]
 
     # Connect to the database
     engine = sqlalchemy.create_engine('postgresql://username:password@localhost/db_name')
     filtered_df.to_sql('pageviews', engine, if_exists='replace', index=False)
 
+""" This function queries the database to analyze and print the pageviews data."""
 def analyze_pageviews():
     engine = sqlalchemy.create_engine('postgresql://username:password@localhost/db_name')
     result = pd.read_sql_query('SELECT page_name, MAX(views) AS max_views FROM pageviews GROUP BY page_name ORDER BY max_views DESC LIMIT 1;', engine)
