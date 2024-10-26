@@ -8,7 +8,7 @@ import pandas as pd
 import sqlalchemy
 
 def download_pageviews(ds, **kwargs):
-    url = "https://dumps.wikimedia.org/other/pageviews/2024/10/pageviews-20241005-160000.gz"
+    url = "https://dumps.wikimedia.org/other/pageviews/2024/10/pageviews-20241001-230000.gz"
     response = requests.get(url)
     with open('/tmp/pageviews.gz', 'wb') as f:
         f.write(response.content)
