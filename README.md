@@ -40,6 +40,8 @@ Download and extract the zip file containing the pageviews data for just one hou
 ## Conclusion
 By accomplishing this case study project, you will become more confident in your data pipeline orchestration with Apache Airflow skill. Give it your best shot and learn as much as possible along the process. Ask as many questions as needed and make Google your best friend. I wish you best of luck
 
+[Back to Top](#Table-Of-Contents)
+
 ## Solution
 ### Wikipedia Pageviews ETL Pipeline with Apache Airflow
 This project is an ETL (Extract, Transform, Load) pipeline implemented using Apache Airflow to download, process, and analyze Wikipedia pageview data for major tech companies. The pipeline downloads compressed pageview data, filters it for specific companies, stores it in a PostgreSQL database, and analyzes the data to identify the company with the highest page views.
