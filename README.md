@@ -1,12 +1,24 @@
 # Data Pipieline Orchestration With Apache Airflow
+
+## Table Of Contents
+1. [Project Overview](#Project-Overview)
+   * [Objective](#Objective)
+   * [Duration](#duration)
+   * [Deliverables](#Deliverables)
+2. [Project Scenario](#Project-Scenario)
+   * [Background](#Background)
+   * [Project Tasks](#Project-Tasks)
+   * [Requirements](#Requirements)
+
+
 ## Project Overview
-### Objective:
+### Objective
 This capstone project is designed to reinforce your understanding of Data Pipeline Orchestration with Apache Airflow. The focus is on implementing a data pipeline that addresses data ingestion, processing, storage, and analysis. The project challenges you to apply your knowledge of Apache Airflow to solve a practical scenario based problem.
 
-### Duration:
+### Duration
 1 week (To be submitted on Saturday 19th of October, 2024)
 
-### Deliverables:
+### Deliverables
 A data pipeline orchestrated with Apache Airflow
 Documentation of the design or architecture of the data pipeline, including the rationale behind key decisions and useful information.
 
@@ -82,7 +94,9 @@ The following SQL query returns the top 5 companies with the highest page views:
 
 ### SQL code
 ```sql
-SELECT page_name AS company_name, MAX(views) AS highest_pageviews_by_company
+SELECT
+  page_name AS company_name,
+  MAX(views) AS highest_pageviews_by_company
 FROM pageviews
 GROUP BY page_name
 ORDER BY highest_pageviews_by_company DESC
